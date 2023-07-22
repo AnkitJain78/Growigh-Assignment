@@ -27,12 +27,19 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import pub.devrel.easypermissions.AppSettingsDialog
 
-class MapFragment : Fragment(), OnMapReadyCallback {
+class MapFragment : Fragment() {
+
+    private val callback = OnMapReadyCallback { googleMap ->
+        val loc = LatLng(currentLocation.latitude, currentLocation.longitude)
+        val markerOptions = MarkerOptions().position(loc).title("Current Location")
+        googleMap.animateCamera(CameraUpdateFactory.newLatLng(loc))
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 7f))
+        googleMap.addMarker(markerOptions)
+    }
     private lateinit var currentLocation: Location
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var requestPermission: ActivityResultLauncher<String>
-    private lateinit var gMap: GoogleMap
-
+    private var mapFragment: SupportMapFragment? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,18 +50,23 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         fusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(requireContext())
         fetchLocation()
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val back: ImageView = view.findViewById(R.id.map_btn_back)
         val btmNav = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
         btmNav.visibility = View.GONE
         back.setOnClickListener {
             btmNav.selectedItemId = R.id.home
         }
-        return view
+        mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
     }
 
     @SuppressLint("MissingPermission")
     private fun fetchLocation() {
-        if (hasLocationPerm()) {
+        if (hasNoLocationPerm()) {
             requestPermission.launch(Manifest.permission.ACCESS_FINE_LOCATION)
             return
         }
@@ -66,21 +78,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     requireContext(), currentLocation.latitude.toString() + "" +
                             currentLocation.longitude, Toast.LENGTH_SHORT
                 ).show()
-                val mMapFragment =
-                    childFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment
-                mMapFragment.getMapAsync(this)
+                mapFragment?.getMapAsync(callback)
             }
         }
     }
-
-    override fun onMapReady(googleMap: GoogleMap) {
-        val loc = LatLng(currentLocation.latitude, currentLocation.longitude)
-        val markerOptions = MarkerOptions().position(loc).title("Current Location")
-        googleMap.animateCamera(CameraUpdateFactory.newLatLng(loc))
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 7f))
-        googleMap.addMarker(markerOptions)
-    }
-
     private fun register() {
         requestPermission = registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -106,7 +107,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    private fun hasLocationPerm(): Boolean {
+    private fun hasNoLocationPerm(): Boolean {
         return ActivityCompat.checkSelfPermission(
             requireContext(), Manifest.permission.ACCESS_FINE_LOCATION
         ) !=

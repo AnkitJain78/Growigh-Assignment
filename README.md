@@ -32,4 +32,4 @@
   ### Screenshots :
 | Onboarding Screens | Home/Feed Screen | Video Screen | Upload Image | Map Screen |
 | --- | --- | --- | --- | --- |
-| <img src="/screenshots/onBoarding.gif" width="168" height="384"> | <img src="/screenshots/home.gif" width="168" height="384"> | <img src="/screenshots/video.gif" width="168" height="384"> | <img src="/screenshots/upload.gif" width="168" height="384"> | <img src="/screenshots/map.jpg" width="220" height="384"> |     
+| <img src="/screenshots/onBoarding.gif" width="168" height="384"> | <img src="/screenshots/home.gif" width="168" height="384"> | <img src="/screenshots/video.gif" width="168" height="384"> | <img src="/screenshots/upload.gif" width="168" height="384"> | <img src="/screenshots/map.gif" width="168" height="384"> |     
