@@ -8,4 +8,8 @@
     <color name="Grad2">#044265</color>
     <color name="GradButt1">#3478A9</color>
     <color name="GradButt2">#104E75</color>
+    <color name="GradBotNav1">#15557D</color>
+    <color name="GradBotNav2">#05445A</color>
+    <color name="swipeShare">#B315547C</color>
+    <color name="red">#FF0000</color>
 </resources>

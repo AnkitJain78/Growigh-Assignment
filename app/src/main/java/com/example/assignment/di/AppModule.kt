@@ -1,6 +1,10 @@
 package com.example.assignment.di
 
+import android.app.Application
+import androidx.room.Room
+import com.example.assignment.data.local.FeedDatabase
 import com.example.assignment.data.remote.FeedApi
+import com.example.assignment.utils.AuthInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,18 +18,28 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
     @Provides
     @Singleton
-    fun provideFeedApi():  FeedApi{
+    fun provideFeedApi(authInterceptor: AuthInterceptor): FeedApi {
         return Retrofit.Builder()
             .baseUrl(FeedApi.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(
                 OkHttpClient.Builder()
-                .build())
+                    .addInterceptor(authInterceptor)
+                    .build()
+            )
             .build()
             .create()
     }
 
+    @Provides
+    @Singleton
+    fun provideFeedDatabase(app: Application): FeedDatabase {
+        return Room.databaseBuilder(
+            app,
+            FeedDatabase::class.java,
+            "feed.db"
+        ).build()
+    }
 }

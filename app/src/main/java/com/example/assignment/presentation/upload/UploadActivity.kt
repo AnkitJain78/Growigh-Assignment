@@ -90,8 +90,7 @@ class UploadActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks,
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                 activityResultLauncher.launch(intent)
             }
-        }
-        else {
+        } else {
             EasyPermissions.requestPermissions(
                 this,
                 getString(R.string.rationale_camera),

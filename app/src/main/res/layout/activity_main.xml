@@ -6,52 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity">
 
-    <ImageView
-        android:id="@+id/img_welcome"
-        android:layout_width="266dp"
-        android:layout_height="256dp"
-        android:layout_marginTop="83dp"
-        android:src="@drawable/broo"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtWelcome"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Welcome Ankit"
-        android:textColor="@color/black"
-        android:textSize="32sp"
+        android:background="@drawable/bottom_nav_bg"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_welcome" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnFeeds"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/btn_bg"
-        android:text="Feeds"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtWelcome" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnUpload"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_bg"
-        android:text="Upload Image"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFeeds" />
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

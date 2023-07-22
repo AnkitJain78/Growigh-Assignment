@@ -6,8 +6,4 @@ import com.example.assignment.utils.Resource
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class MyApplication: Application(){
-    companion object{
-        var ret: Resource<List<Feed>>? = null
-    }
-}
+class MyApplication : Application()

@@ -1,102 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feedConstraint"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingHorizontal="20dp"
+    android:layout_marginTop="10dp"
+    android:paddingHorizontal="15dp"
     android:paddingTop="15dp">
-
-    <TextView
-        android:id="@+id/feed_source"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="Youtube"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/feed_type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="Tech News"
-        android:textColor="@color/black"
-        android:alpha=".7"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/feedTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="match_parent"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/account_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/profile_img"
+            tools:src="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="6dp"
-        android:layout_marginTop="6dp">
+        android:layout_marginHorizontal="10dp"
+        android:fontFamily="@font/notosans_bold"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        tools:text="The Verge" />
+
+    <TextView
+        android:id="@+id/user_sub_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/notosans_regular"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/user_name"
+        app:layout_constraintTop_toBottomOf="@+id/user_name"
+        tools:text="Tech News" />
+
+    <TextView
+        android:id="@+id/post_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:fontFamily="@font/notosans_regular"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        tools:text="Meta explains how AI influences what we see on Facebook and Instagram" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_desc">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/feedImage"
+                android:id="@+id/post_img"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/placeholder"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/bg_like_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_like_white"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:id="@+id/bookmark_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_bookmark"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_bookmark" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-    <ImageView
+    <TextView
+        android:id="@+id/view_comments_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:fontFamily="@font/notosans_regular"
+        android:text="View All Comments"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+    <ImageView
+        android:id="@+id/like_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
         android:src="@drawable/ic_like"
-        android:layout_weight="1"/>
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_comments_tv" />
 
-        <ImageView
-            android:layout_width="0dp"
+    <TextSwitcher
+        android:id="@+id/tv_likes_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:layout_marginStart="6dp"
+        android:inAnimation="@anim/slide_in_likes_counter"
+        android:outAnimation="@anim/slide_out_likes_counter"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/like_icon"
+        app:layout_constraintTop_toBottomOf="@id/view_comments_tv">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_comment"
-            android:layout_weight="1"/>
+            android:fontFamily="@font/notosans_regular"
+            tools:text="21 Likes" />
 
-        <ImageView
-            android:layout_width="0dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_share"
-            android:layout_weight="1"/>
+            android:fontFamily="@font/notosans_regular" />
 
-    </LinearLayout>
-</LinearLayout>
+    </TextSwitcher>
+
+    <TextView
+        android:id="@+id/comments_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/notosans_regular"
+        android:text="Comments"
+        app:drawableStartCompat="@drawable/ic_comment"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_likes_counter"
+        app:layout_constraintEnd_toStartOf="@+id/share_tv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_likes_counter"
+        app:layout_constraintTop_toTopOf="@+id/tv_likes_counter" />
+
+    <TextView
+        android:id="@+id/share_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:drawablePadding="8dp"
+        android:fontFamily="@font/notosans_regular"
+        android:text="Share"
+        app:drawableStartCompat="@drawable/ic_share"
+        app:layout_constraintBottom_toBottomOf="@+id/comments_tv"
+        app:layout_constraintStart_toEndOf="@+id/comments_tv"
+        app:layout_constraintTop_toTopOf="@+id/comments_tv" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,4 +4,7 @@
     <string name="rationale_camera">This app needs access to your camera so you can take pictures.</string>
     <string name="storage">This app needs access to storage.</string>
     <string name="hint"><font color="#1E1E1E">Explore</font></string>
+    <string name="likes">%1$d  Likes</string>
+    <string name="comments">%1$d Comments</string>
+    <string name="title_video">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do...</string>
 </resources>

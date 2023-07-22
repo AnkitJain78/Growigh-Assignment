@@ -3,13 +3,12 @@ package com.example.assignment.presentation.onboardingScreens
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
-import com.example.assignment.R
 import com.example.assignment.databinding.ActivityOnboardingBinding
 import com.example.assignment.presentation.MainActivity
 import com.example.assignment.utils.ZoomOutPageTransformer
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 private const val NUM_PAGES = 3
 
@@ -48,7 +47,12 @@ class OnboardingActivity : AppCompatActivity() {
         if (binding.onBoardingViewPager.currentItem == 0) {
             super.onBackPressed()
         } else {
-            binding.onBoardingViewPager.setCurrentItem(binding.onBoardingViewPager.currentItem - 1)
+            Handler(Looper.getMainLooper()).postDelayed({
+                binding.onBoardingViewPager.setCurrentItem(
+                    binding.onBoardingViewPager.currentItem - 1,
+                    true
+                )
+            }, 300)
         }
     }
 }

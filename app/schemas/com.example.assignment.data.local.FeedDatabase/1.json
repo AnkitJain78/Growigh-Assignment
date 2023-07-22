@@ -1,0 +1,124 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "c7695e373495467b3ecd2f4802fcd1dc",
+    "entities": [
+      {
+        "tableName": "feed_entity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `alt_description` TEXT, `description` TEXT, `isLiked` INTEGER NOT NULL, `likes` INTEGER NOT NULL, `comments` INTEGER NOT NULL, `full` TEXT NOT NULL, `raw` TEXT NOT NULL, `regular` TEXT NOT NULL, `small_s3` TEXT NOT NULL, `thumb` TEXT NOT NULL, `name` TEXT NOT NULL, `username` TEXT NOT NULL, `large` TEXT NOT NULL, `medium` TEXT NOT NULL, `small` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "alt_description",
+            "columnName": "alt_description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isLiked",
+            "columnName": "isLiked",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "likes",
+            "columnName": "likes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "comments",
+            "columnName": "comments",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "urls.full",
+            "columnName": "full",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "urls.raw",
+            "columnName": "raw",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "urls.regular",
+            "columnName": "regular",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "urls.small_s3",
+            "columnName": "small_s3",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "urls.thumb",
+            "columnName": "thumb",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "user.name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "user.username",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "user.profile_image.large",
+            "columnName": "large",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "user.profile_image.medium",
+            "columnName": "medium",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "user.profile_image.small",
+            "columnName": "small",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c7695e373495467b3ecd2f4802fcd1dc')"
+    ]
+  }
+}
